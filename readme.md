@@ -22,7 +22,9 @@ indexes:
 ```
 
 ### Run
+```bash
 APP_PORT=3000 JWT_KEY=jwtsecretkey JWT_TTL=2592000 ADMIN_TOKEN=admintokenkey MONGODB_URI=mongodb://ubuntu-server:27017 node index.js
+```
 
 ### Create account
 ```bash

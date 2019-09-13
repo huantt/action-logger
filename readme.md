@@ -21,16 +21,21 @@ indexes:
 {"text": "text"}
 ```
 
-### Build
-```bash
-docker build -t <image_name>:<tag> .
-```
-
 ### Run
+APP_PORT=3000 JWT_KEY=jwtsecretkey JWT_TTL=2592000 ADMIN_TOKEN=admintokenkey MONGODB_URI=mongodb://ubuntu-server:27017 node index.js
+
+### Create account
 ```bash
-docker run -d --name actions_logger \
-    -e APP_PORT=3000 \
-    -e MONGODB_URI=<mongodb_uri_here>
-    --restart always \
-    <image_name>:<tag>
+curl -X POST \
+  http://localhost:8080/api/auth/register \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Length: 71' \
+  -H 'Content-Type: application/json' \
+  -H 'Host: localhost:8080' \
+  -d '{
+	"username":"admin",
+	"password":"pasword",
+	"token":"admintokenkey"
+	
+}'
 ```
